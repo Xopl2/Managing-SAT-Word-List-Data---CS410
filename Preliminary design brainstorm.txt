@@ -1,0 +1,13 @@
+Initially my plan is to use react for the frontend to try and make a somewhat
+visually appealing UI for the user, and to use node.js for the backend
+logic since I have a solid foundation using it and a good plan for building the logic.
+I will use the VS Code liveserver extention to run the page, since even though I could
+host it through my personal Arch linux server, Its just a school assignment and thats
+an extra hoop to jump through.
+
+My inital drawup will be on paper of the design including the 4 options
+new entry, Word lookup, Save additions, and quit application
+
+my plan is to first begin working on the frontend to make it visually appealing and then
+wire up the backend logic to make it function.
+

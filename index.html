@@ -1,0 +1,29 @@
+<!--
+  Standard React CDN setup, following the React documentation's
+  approach for running React without a build step.
+  Assembled with AI assistance (Claude). The application logic in
+  App.jsx and the components folder is my own work.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SAT Word List Manager</title>
+  <link rel="stylesheet" href="App.css" />
+
+  <!-- React and ReactDOM, loaded from a CDN -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+
+  <!-- Babel translates JSX into plain JavaScript in the browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <!-- React mounts the entire application inside this div -->
+  <div id="root"></div>
+
+  <!-- type="text/babel" tells Babel to translate these files before running them -->
+  <script type="text/babel" src="App.jsx"></script>
+  <script type="text/babel" src="main.jsx"></script>
+</body>
+</html>

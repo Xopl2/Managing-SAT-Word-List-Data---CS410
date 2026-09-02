@@ -1,0 +1,25 @@
+/* All styling for the applications front end is contained in this file. */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    display: flex;
+    height: 100vh; /* full browser height */
+}
+
+.menu-window {
+    background: #1b2233;
+    color: white;
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.display-window {
+    background: #faf8f5;
+    flex-grow: 1;
+}
+
