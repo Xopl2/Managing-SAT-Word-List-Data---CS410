@@ -11,11 +11,13 @@
     height: 100vh; /* full browser height */
 }
 
-.menu-window {
-    background: #1b2233;
-    color: white;
+.menu-window { /* Added background color to affect the liquid effect of the menu window buttons */
     width: 280px;
     flex-shrink: 0;
+    padding: 32px 24px;
+
+    /* background effect */
+    background: #1b2233;
 }
 
 .display-window {
@@ -23,3 +25,51 @@
     flex-grow: 1;
 }
 
+/* menu window title styling */
+.menu-window h1 {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+
+/* Menu window buttons styling */
+.menu-window button {
+    display: block;
+    width: 100%;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+
+    /* liquid glass effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    inset: 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+
+}
+
+/* effect when hovering over the buttons or clicking */
+.menu-window button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.40);
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Press effect */
+.menu-window button:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.14);
+}
