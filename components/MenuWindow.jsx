@@ -10,8 +10,6 @@ function MenuWindow({ words, onAddEntry }) {
                 ))}
             </ul>
 
-
-
             <div className="menu-buttons">
                 <button onClick={onAddEntry}>Add New Entry</button>
                 <button>Check Meaning</button>

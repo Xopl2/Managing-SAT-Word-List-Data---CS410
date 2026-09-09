@@ -98,7 +98,7 @@
     overflow-y: auto;
 }
 
-/* Add-entry form — mirrors the sidebar's heading style on a light background */
+/* Add-entry form styling */
 .entry-form {
     max-width: 480px;
 }
@@ -140,19 +140,20 @@
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Focus ring — replaces the browser default we removed */
+/* Focus ring */
 .entry-form input[type="text"]:focus {
     outline: none;
     border-color: #1b2233;
     box-shadow: 0 0 0 3px rgba(27, 34, 51, 0.12);
 }
 
+/* Styling for the word type selector */
 .entry-form select {
     max-width: 220px;
     margin-left: 12px;
 }
 
-/* Submit button — solid fill, echoing the sidebar color */
+/* Submit button styling */
 .entry-form .submit-button {
     margin-top: 12px;
     padding: 12px 28px;
@@ -169,6 +170,7 @@
     transition: all 0.2s ease;
 }
 
+/* Submit button hover and active effects */
 .entry-form .submit-button:hover {
     background: #2a3550;
     transform: translateY(-1px);

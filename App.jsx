@@ -20,7 +20,8 @@ function App() {
             entry => entry.word.toLowerCase() === newWord.word.toLowerCase()
         )
 
-        if (alreadyExists) return false; //return false if it already exists
+        //return false if the word already exists
+        if (alreadyExists) return false; 
 
         setWords([newWord, ...words]);
         return true; //indicate that the word does not already exist

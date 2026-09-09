@@ -2,6 +2,7 @@ function parseWordFile(fileText) {
   const words = [];
   const lines = fileText.split("\n");
   
+  // iterate through each line in the file
   for (const line of lines) {
     const trimmedLine = line.trim();
     if (trimmedLine === "") continue; // skip empty lines
@@ -16,9 +17,10 @@ function parseWordFile(fileText) {
         meaning: parts.slice(2).join(" ") // join the rest as the meaning
     };
 
+    // add the word entry to the words array
     words.push(wordEntry);
   }
 
-  console.log(words); // for debugging, log the parsed words
+  // return the array of word entries
   return words;
 }

@@ -8,17 +8,20 @@ function AddWordForm({ onAddWord }) {
     function handleSubmit(e) {
         e.preventDefault(); //stops the browser reloading the page
         
+        //check if the word or meaning fields are empty, and alert the user if they are
         if (word.trim() === "" || meaning.trim() === "") {
             alert("Please fill in both the word and its definition.");
             return;
         }
 
+        //call the onAddWord function passed as a prop from the parent component
         const wasAdded = onAddWord({
             word: word.trim(),
             type: type,
             meaning: meaning.trim()
         })
 
+        //if the word already exists, alert the user and do not clear the form fields
         if (!wasAdded) {
             alert(`The word "${word}" already exists in the list.`);
             return;
@@ -52,7 +55,7 @@ function AddWordForm({ onAddWord }) {
                 />
             </label> 
             
-            <label> {/* Word type input field */}
+            <label> {/* Word type selector */}
                 Type
                 <select value={type} onChange={(e) => setType(e.target.value)}>
                     <option value="n">Noun</option>
@@ -62,8 +65,6 @@ function AddWordForm({ onAddWord }) {
             </label>
 
             <button type="submit" className="submit-button">Submit</button>
-
-        
         </form>
     );
 }
