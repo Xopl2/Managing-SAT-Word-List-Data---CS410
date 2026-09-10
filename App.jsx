@@ -27,11 +27,23 @@ function App() {
         return true; //indicate that the word does not already exist
     }
 
+    // Ends the session. Browsers block window.close() on tabs the user opened (which may cause it to not work)
+    function handleQuit() {
+        const confirmed = window.confirm(
+            "Quit the application? Any changes made since your last save will be lost."
+        );
+        if (!confirmed) return;
+
+        setActiveView("quit");
+        window.close();
+    }
+
     return (
         <div className="app"> {/* App window — encompases the entire application window */}
             <MenuWindow
              words={words}
              onAddEntry={() => setActiveView("add")}
+             onQuit={handleQuit}
             />
 
             <div className="display-window">{/*Display Window - Displays content for whichever option was selected */}

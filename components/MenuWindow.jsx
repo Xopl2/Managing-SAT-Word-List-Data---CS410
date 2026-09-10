@@ -1,5 +1,5 @@
 // Menu window - hold the four option buttons and the list of words
-function MenuWindow({ words, onAddEntry }) {
+function MenuWindow({ words, onAddEntry, onQuit }) {
     return (
         <div className="menu-window">
             <h1>SAT Word List</h1>
@@ -12,9 +12,10 @@ function MenuWindow({ words, onAddEntry }) {
 
             <div className="menu-buttons">
                 <button onClick={onAddEntry}>Add New Entry</button>
+                <button>Delete Entry</button>
                 <button>Check Meaning</button>
                 <button>Save Word List</button>
-                <button>Quit Application</button>
+                <button onClick={onQuit}>Quit Application</button>
             </div>
         </div>
     );
