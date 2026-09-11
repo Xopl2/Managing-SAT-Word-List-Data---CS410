@@ -3,7 +3,7 @@ function App() {
     const [words, setWords] = React.useState([]);
 
     //which panel the display window is currently showing
-    const [activeView, setActiveView] = React.useState("none");
+    const [activeView, setActiveView] = React.useState("check");
 
     // load words.dat when the app first loads
     React.useEffect(() => {
@@ -38,17 +38,26 @@ function App() {
         window.close();
     }
 
+    // Searches the in-memory word list for a matching word entry.
+    function handleCheckMeaning(searchTerm) {
+        const match = words.find(
+            entry => entry.word.toLowerCase() === searchTerm.toLowerCase()
+        );
+        return match || null;
+    }
+
     return (
         <div className="app"> {/* App window — encompases the entire application window */}
             <MenuWindow
              words={words}
              onAddEntry={() => setActiveView("add")}
+             onCheckMeaning={() => setActiveView("check")}
              onQuit={handleQuit}
             />
 
             <div className="display-window">{/*Display Window - Displays content for whichever option was selected */}
-                {activeView === "none" && <h1>Display area</h1>}
                 {activeView === "add" && <AddWordForm onAddWord={handleAddWord} />}
+                {activeView === "check" && <CheckMeaningForm onCheckMeaning={handleCheckMeaning} />}
             </div>
         </div>
     );
