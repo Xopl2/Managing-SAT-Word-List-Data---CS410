@@ -1,5 +1,5 @@
 function App() {
-    // the word list
+    //the word list
     const [words, setWords] = React.useState([]);
 
     //which panel the display window is currently showing
@@ -27,6 +27,19 @@ function App() {
         return true; //indicate that the word does not already exist
     }
 
+    //removes a word from the in-memory word list (does not save to file)
+    function handleDeleteWord(searchTerm) {
+        const remaining = words.filter(
+            entry => entry.word.toLowerCase() !== searchTerm.toLowerCase()
+        );
+
+        //if nothing was filtered the word isnt in the list, return false
+        if (remaining.length === words.length) return false;
+
+        setWords(remaining);
+        return true;
+    }
+
     // Ends the session. Browsers block window.close() on tabs the user opened (which may cause it to not work)
     function handleQuit() {
         const confirmed = window.confirm(
@@ -51,6 +64,7 @@ function App() {
             <MenuWindow
              words={words}
              onAddEntry={() => setActiveView("add")}
+             onDeleteEntry={() => setActiveView("delete")}
              onCheckMeaning={() => setActiveView("check")}
              onQuit={handleQuit}
             />
@@ -58,6 +72,7 @@ function App() {
             <div className="display-window">{/*Display Window - Displays content for whichever option was selected */}
                 {activeView === "add" && <AddWordForm onAddWord={handleAddWord} />}
                 {activeView === "check" && <CheckMeaningForm onCheckMeaning={handleCheckMeaning} />}
+                {activeView === "delete" && <DeleteWordForm onDeleteWord={handleDeleteWord} />}
             </div>
         </div>
     );
