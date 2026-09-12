@@ -40,6 +40,39 @@ function App() {
         return true;
     }
 
+    // Writes the current in-memory list to a file the user chooses.
+    // Uses the File System Access API, available only in chromium based browsers
+    async function handleSaveList() {
+        //detects if the users browser is compatible
+        if (!("showSaveFilePicker" in window)) {
+            alert("Saving required a Chromium-based browser such as Chrome or Edge.")
+            return;
+        }
+
+        try {
+            //ask the user which file to write to
+            const fileHandle = await window.showSaveFilePicker({
+                suggestedName: "words.dat",
+                types: [{
+                    description: "Word list data file",
+                    accept: { "text/plain": [".dat"]}
+                }]
+            });
+
+            //write to the serialized list, then close the stream to commit it
+            const writable = await fileHandle.createWritable();
+            await writable.write(serializeWordList(words));
+            await writable.close();
+            
+            alert("Word list saved sucessfully.")
+        } catch (error) {
+            //abort error means the user closed the picker - not a real feature
+            if (error.name !== "AbortError") {
+                alert("Could not save to file: " + error.message);
+            }
+        }
+    }
+
     // Ends the session. Browsers block window.close() on tabs the user opened (which may cause it to not work)
     function handleQuit() {
         const confirmed = window.confirm(
@@ -66,6 +99,7 @@ function App() {
              onAddEntry={() => setActiveView("add")}
              onDeleteEntry={() => setActiveView("delete")}
              onCheckMeaning={() => setActiveView("check")}
+             onSaveList={handleSaveList}
              onQuit={handleQuit}
             />
 

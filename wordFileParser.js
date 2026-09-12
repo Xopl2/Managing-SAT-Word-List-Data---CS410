@@ -24,3 +24,13 @@ function parseWordFile(fileText) {
   // return the array of word entries
   return words;
 }
+
+// Converts the in-memory word list back into word.dat's column format.
+// The inverse of the above function
+function serializeWordList(words) {
+  //turn each erntry into one formatted line
+  const lines = words.map(entry => entry.word.padEnd(16) + entry.type.padEnd(5) + entry.meaning)
+
+  //join the lines with newlines, and add one to the end of the file
+  return lines.join("\n") + "\n";
+}
